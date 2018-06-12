@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/enl_2_c_logo"
+    tools:context="com.example.manuelfigueroa.turismaule.LoginActivity">
+
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="243dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="148dp"
+
+        android:layout_marginEnd="68dp"
+        android:background="@drawable/rounded_button"
+        android:text="INGRESAR"
+        android:onClick="bt_login_click"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_pass" />
+
+    <EditText
+        android:id="@+id/txt_user"
+        android:layout_width="238dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="186dp"
+        android:ems="10"
+        android:hint="Usuario"
+        android:inputType="textPersonName"
+        android:textColorLink="@android:color/holo_green_dark"
+        app:layout_constraintBottom_toTopOf="@+id/txt_pass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_pass"
+        android:layout_width="238dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="275dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textColorLink="@android:color/holo_green_dark"
+        app:layout_constraintBottom_toTopOf="@+id/btn_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
