@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -24,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btn_login;
     private EditText txt_user;
     private EditText txt_pass;
-    private static Usuario userstatic = new Usuario();
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login = (Button) findViewById(R.id.btn_login);
         txt_user = (EditText) findViewById(R.id.txt_user);
         txt_pass = (EditText) findViewById(R.id.txt_pass);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
     }
 
@@ -57,7 +59,13 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                Context context = getApplicationContext();
+                CharSequence text = "Error de conexión";
+                int duration = Toast.LENGTH_SHORT;
 
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -109,23 +117,27 @@ public class LoginActivity extends AppCompatActivity {
 
         if (usuario.getId_usuario() == 0) {
             Context context = getApplicationContext();
-            CharSequence text = "Ta vacioh";
+            CharSequence text = "Usuario o Contraseña incorrectos";
             int duration = Toast.LENGTH_SHORT;
 
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
+            progressBar.setVisibility(View.INVISIBLE);
         } else {
             Context context = getApplicationContext();
-            CharSequence text = "Usuario: " + usuario.getNombre();
+            CharSequence text = "Bienvenido " + usuario.getNombre();
             int duration = Toast.LENGTH_SHORT;
 
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
+            progressBar.setVisibility(View.INVISIBLE);
         }
 
     }
 
     public void bt_login_click(View view) {
+
+        progressBar.setVisibility(View.VISIBLE);
 
         String user = txt_user.getText().toString();
         String pass = txt_pass.getText().toString();
